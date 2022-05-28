@@ -1,0 +1,126 @@
+.group {
+    display: block;
+    position: relative;
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ea4335;
+    overflow: hidden;
+    margin: 20px auto;
+    border: 1px solid #ea4335;
+    transition: 200ms;
+}
+.group.out {
+    overflow: visible;
+}
+.group:focus-within {
+    background-color: #4285f4;
+    border: 1px solid #4285f4;
+}
+.group > span {
+    display:block;
+    float:left;
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.group > input {
+    display: block;
+    float:left;
+    width: calc(100% - 70px);
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+.group > input:focus {
+    outline:none;
+    border:none;
+}
+.group > .select {
+    display: block;
+    position: absolute;
+    width: calc(100% - 70px);
+    height: 40px;
+    top:0;
+    right:0;
+    line-height: 40px;
+    border: none;
+    padding: 0 30px 0 10px;
+    box-sizing: border-box;
+    margin: 0;
+    transition: 250ms;
+    overflow: hidden;
+    background-color: white;
+    cursor: default;
+    border-radius: 0 20px 20px 0;
+}
+.group > .select::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+    clip-path: polygon(15px 10px,20px 19px,10px 19px);
+}
+.group > .select::after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+    clip-path: polygon(10px 21px,20px 21px,15px 30px);
+}
+.group > .select > .options {
+    display:block;
+    position: absolute;
+    width:calc(100% - 40px);
+    height: auto;
+    transition: 250ms;
+}
+.group > .select > .options > span {
+    display:block;
+    width:100%;
+    white-space: no-warp;
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+}
+
+.group > .select > .options > span:hover {
+    color: #ea4335;
+}
+
+.group > .select > .options > span[selected]{
+    color: black;
+}
+.group > .select[data-coll="no"]{
+    border-radius: 20px;
+    overflow: hidden;
+    z-index:999999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.group > button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ea4335;
+    color: white;
+    border: none;
+}

@@ -1,0 +1,204 @@
+{
+	"name": "veldatabase",
+	"displayName": "Vel-Database",
+	"description": "The database visual management tool",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.65.0"
+	},
+	"categories": [
+		"Visualization"
+	],
+	"activationEvents": [
+		"onView:vel-mainview"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "vel-main",
+					"title": "Vel數據庫管理工具",
+					"icon": "images/main.svg"
+				}
+			]
+		},
+		"views": {
+			"vel-main": [
+				{
+					"id": "vel-mainview",
+					"name": "數據庫",
+					"icon": "images/main.svg"
+				}
+			]
+		},
+		"commands": [
+			{
+				"title": "添加伺服器",
+				"command": "veldb.addLink",
+				"icon": "$(add)"
+			},
+			{
+				"title": "刷新",
+				"command": "veldb.refreshTree",
+				"icon": "$(refresh)"
+			},
+			{
+				"title": "添加資料庫",
+				"command": "veldb.addDB",
+				"icon": "$(add)"
+			},
+			{
+				"title": "刪除資料庫",
+				"command": "veldb.delDB",
+				"icon": "$(trash)"
+			},
+			{
+				"title": "編輯伺服器",
+				"command": "veldb.editLink",
+				"icon": "$(wrench-subaction)"
+			},
+			{
+				"title": "刪除伺服器",
+				"command": "veldb.delLink",
+				"icon": "$(trash)"
+			},
+			{
+				"title": "添加表",
+				"command": "veldb.addTable",
+				"icon": "$(empty-window)"
+			},
+			{
+				"title": "查看表",
+				"command": "veldb.viewTable",
+				"icon": "$(preview)"
+			},
+			{
+				"title": "編輯表結構",
+				"command": "veldb.editTable",
+				"icon": "$(edit)"
+			},
+			{
+				"title": "刪除表",
+				"command": "veldb.delTable",
+				"icon": "$(trash)"
+			},
+			{
+				"title": "清空表",
+				"command": "veldb.clearTable",
+				"icon": "$(clear-all)"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "veldb.refreshTree",
+					"group": "navigation@2",
+					"when": "view == vel-mainview"
+				},
+				{
+					"command": "veldb.addLink",
+					"group": "navigation@1",
+					"when": "view == vel-mainview"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "veldb.addDB",
+					"group": "inline@1",
+					"when": "view == vel-mainview && viewItem == server"
+				},
+				{
+					"command": "veldb.editLink",
+					"group": "inline@2",
+					"when": "view == vel-mainview && viewItem == server"
+				},
+				{
+					"command": "veldb.addDB",
+					"group": "@1",
+					"when": "view == vel-mainview && viewItem == server"
+				},
+				{
+					"command": "veldb.editLink",
+					"group": "@2",
+					"when": "view == vel-mainview && viewItem == server"
+				},
+				{
+					"command": "veldb.delLink",
+					"group": "@3",
+					"when": "view == vel-mainview && viewItem == server"
+				},
+				{
+					"command": "veldb.addTable",
+					"group": "inline@1",
+					"when": "view == vel-mainview && viewItem == database"
+				},
+				{
+					"command": "veldb.addTable",
+					"group": "@1",
+					"when": "view == vel-mainview && viewItem == database"
+				},
+				{
+					"command": "veldb.delDB",
+					"group": "@3",
+					"when": "view == vel-mainview && viewItem == database"
+				},
+				{
+					"command": "veldb.viewTable",
+					"group": "inline@1",
+					"when": "view == vel-mainview && viewItem == table"
+				},
+				{
+					"command": "veldb.editTable",
+					"group": "inline@2",
+					"when": "view == vel-mainview && viewItem == table"
+				},
+				{
+					"command": "veldb.viewTable",
+					"group": "@1",
+					"when": "view == vel-mainview && viewItem == table"
+				},
+				{
+					"command": "veldb.editTable",
+					"group": "@2",
+					"when": "view == vel-mainview && viewItem == table"
+				},
+				{
+					"command": "veldb.clearTable",
+					"group": "@3",
+					"when": "view == vel-mainview && viewItem == table"
+				},
+				{
+					"command": "veldb.delTable",
+					"group": "@4",
+					"when": "view == vel-mainview && viewItem == table"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.0",
+		"@types/mysql": "^2.15.21",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.65.0",
+		"@typescript-eslint/eslint-plugin": "^5.12.1",
+		"@typescript-eslint/parser": "^5.12.1",
+		"@vscode/test-electron": "^2.1.2",
+		"eslint": "^8.9.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.2.1",
+		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"mysql": "^2.18.1"
+	}
+}

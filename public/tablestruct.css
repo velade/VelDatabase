@@ -1,0 +1,272 @@
+.base {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.group {
+    display: block;
+    position: relative;
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ea4335;
+    overflow: hidden;
+    margin: 20px auto;
+    border: 1px solid #ea4335;
+    transition: 200ms;
+}
+.group.out {
+    overflow: visible;
+}
+.group:focus-within {
+    background-color: #4285f4;
+    border: 1px solid #4285f4;
+}
+.group > span {
+    display:block;
+    float:left;
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.group > input {
+    display: block;
+    float:left;
+    width: calc(100% - 70px);
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+.group > input:focus {
+    outline:none;
+    border:none;
+}
+.group > .select {
+    display: block;
+    position: absolute;
+    width: calc(100% - 70px);
+    height: 40px;
+    top:0;
+    right:0;
+    line-height: 40px;
+    border: none;
+    padding: 0 30px 0 10px;
+    box-sizing: border-box;
+    margin: 0;
+    transition: 250ms;
+    overflow: hidden;
+    background-color: white;
+    cursor: default;
+    border-radius: 0 20px 20px 0;
+}
+.group > .select::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+    clip-path: polygon(15px 10px,20px 19px,10px 19px);
+}
+.group > .select::after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+    clip-path: polygon(10px 21px,20px 21px,15px 30px);
+}
+.group > .select > .options {
+    display:block;
+    position: absolute;
+    width:calc(100% - 40px);
+    height: auto;
+    transition: 250ms;
+}
+.group > .select > .options > span {
+    display:block;
+    width:100%;
+    white-space: no-warp;
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+}
+.group > .select > .options > span[selected]{
+    color: black;
+}
+.group > .select[data-coll="no"]{
+    border-radius: 20px;
+    overflow: hidden;
+    z-index:999999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+body.vscode-dark .bottombar {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0,0,0,0.5);
+    border-top: 2px solid rgb(253,253,253);
+}
+body.vscode-light .bottombar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0,0,0,0.3);
+    border-top: 2px solid rgb(0,0,0);
+}
+.bottombar > button {
+    display: block;
+    min-width: 100px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #ea4335;
+    color: white;
+    border: none;
+    padding: 0 10px;
+    border-radius: 15px;
+    transition: background 150ms;
+}
+
+.bottombar > button:hover {
+    filter: brightness(1.2);
+}
+
+.bottombar > button:active {
+    filter: brightness(0.8);
+}
+
+table {
+    min-width: 100%;
+    margin-top: 20px;
+    border-spacing: 2px;
+    max-height: calc(100% - 150px);
+    margin-bottom: 100px;
+}
+
+table tr th {
+    line-height: normal;
+    vertical-align: top;
+    position: relative;
+}
+
+table tr th svg {
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 2px;
+    top: calc(50% - 8px);
+    opacity: 0;
+    transition: 200ms;
+}
+
+table tr th[data-orderby=ASC] svg {
+    opacity: 1;
+}
+
+table tr th[data-orderby=DESC] svg {
+    opacity: 1;
+    transform: rotate(180deg);
+}
+
+table tr,table tr td {
+    height: 30px;
+    min-height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table tbody tr td {
+    background-color: white;
+}
+
+body.vscode-dark table tfoot tr:hover {
+    background-color: rgba(253,253,253,0.3);
+    cursor: pointer;
+}
+body.vscode-light table tfoot tr:hover {
+    background-color: rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+table input {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    vertical-align: middle;
+    transition: width 200ms;
+}
+
+table input[data-half] {
+    width: 50%;
+}
+table input:not(:first-child) {
+    border-left: 1px solid rgb(50,50,50);
+}
+
+table thead th span {
+    display: block;
+}
+table thead th .subth {
+    font-size: 0.6em;
+    color: gray;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.datapage {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
+    transition: 200ms;
+    vertical-align: text-bottom;
+    text-align: center;
+    cursor: pointer;
+}
+
+.datapage:hover .ColorScheme-Text {
+    color: #ea4335;
+}
+
+body.vscode-dark .ColorScheme-Text {
+    color: white;
+}
